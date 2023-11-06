@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-theme-default: 68, 64, 60; /* stone-700 */
+    --color-theme-faded: 75, 85, 99; /* gray-600 */
+    --color-theme-neon: 22, 255, 0;
+    --color-theme-gold: 192, 127, 0;
+  }
+
+  :root,
+  :root.theme-default {
+    --color-bg-base1: 41, 37, 36; /* stone-800 */
+    --color-bg-base2: 68, 64, 60; /* stone-600 */
+    --color-bg-base3: 120, 113, 108; /* stone-500 */
+    --color-bg-hover: 28, 25, 23; /* stone-900 */
+
+    --color-accent1: 37, 99, 235; /* blue-600 */
+    --color-accent2: 22, 163, 74; /* green-600 */
+    --color-accent3: 220, 38, 38; /* red-600 */
+    --color-accent4: 202, 138, 4; /* yellow-600 */
+    --color-accent5: 219, 39, 119; /* pink-600 */
+    --color-accent6: 52, 211, 153; /* emerald-400 */
+    --color-accent7: 234, 88, 12; /* orange-600 */
+    --color-accent8: 147, 51, 234; /* purple-600 */
+    --color-accent9: 225, 29, 72; /* rose-600 */
+    --color-accent10: 30, 64, 175; /* blue-800 */
+
+    --color-text-base: 245, 245, 244; /* stone-100 */
+    --color-text-faded: 115, 115, 115; /* neutral-500 */
+    --color-text-alert: 185, 28, 28; /* red-700 */
+
+    /* Gradient Colors */
+    --color-gradient1: rgb(37, 99, 235); /* blue-600 */
+    --color-gradient2: rgb(22, 163, 74); /* green-600 */
+    --color-gradient3: rgb(220, 38, 38); /* red-600 */
+    --color-gradient4: rgb(202, 138, 4); /* yellow-600 */
+
+    /* scrollbar-colors */
+    --color-scrollbar-track: rgb(68, 64, 60); /* stone-600 */
+    --color-scrollbar-thumb: rgb(120, 113, 108); /* stone-500 */
+    --color-scrollbar-hover: rgb(168, 162, 158); /* stone-400 */
+  }
+
+  :root.theme-faded {
+    --color-bg-base1: 3, 7, 18; /* gray-950 */
+    --color-bg-base2: 31, 41, 55; /* gray-800 */
+    --color-bg-base3: 75, 85, 99; /* gray-600 */
+    --color-bg-hover: 3, 7, 18; /* gray-950 */
+
+    --color-accent1: 30, 58, 138; /* blue-900 */
+    --color-accent2: 20, 83, 45; /* green-900 */
+    --color-accent3: 127, 29, 29; /* red-900 */
+    --color-accent4: 113, 63, 18; /* yellow-900 */
+    --color-accent5: 131, 24, 67; /* pink-900 */
+    --color-accent6: 19, 78, 74; /* teal-900 */
+    --color-accent7: 154, 52, 18; /* orange-800 */
+    --color-accent8: 88, 28, 135; /* purple-900 */
+    --color-accent9: 136, 19, 55; /* rose-900 */
+    --color-accent10: 46, 16, 101; /* indigo-950 */
+
+    --color-text-base: 148, 163, 184; /* slate-400 */
+    --color-text-faded: 71, 85, 105; /* slate-600 */
+
+    /* Gradient Colors */
+    --color-gradient1: rgb(30, 58, 138); /* blue-900 */
+    --color-gradient2: rgb(20, 83, 45); /* green-900 */
+    --color-gradient3: rgb(127, 29, 29); /* red-900 */
+    --color-gradient4: rgb(113, 63, 18); /* yellow-900 */
+
+    /* scrollbar-colors */
+    --color-scrollbar-track: rgb(31, 41, 55); /* gray-800 */
+    --color-scrollbar-thumb: rgb(75, 85, 99); /* gray-600 */
+    --color-scrollbar-hover: rgb(100, 116, 139); /* slate-500 */
+  }
+
+  :root.theme-neon {
+    --color-bg-base1: 0, 0, 0;
+    --color-bg-base2: 26, 26, 26;
+    --color-bg-base3: 51, 51, 51;
+    --color-bg-hover: 0, 0, 0;
+
+    --color-accent1: 23, 37, 84; /* blue-950 */
+    --color-accent2: 15, 23, 42; /* slate-900 */
+    --color-accent3: 76, 5, 25; /* rose-950 */
+    --color-accent4: 66, 32, 6; /* yellow-950 */
+    --color-accent5: 74, 4, 78; /* fuchsia-950 */
+    --color-accent6: 46, 16, 101; /* violet-950 */
+    --color-accent7: 69, 10, 10; /* red-950 */
+    --color-accent8: 31, 41, 55; /* gray-800 */
+    --color-accent9: 80, 7, 36; /* pink-950 */
+    --color-accent10: 39, 39, 42; /* zinc-800 */
+
+    --color-text-base: 22, 255, 0;
+    --color-text-faded: 13, 153, 0;
+
+    /* Gradient Colors */
+    --color-gradient1: rgb(23, 37, 84); /* blue-950 */
+    --color-gradient2: rgb(15, 23, 42); /* slate-900 */
+    --color-gradient3: rgb(76, 5, 25); /* rose-950 */
+    --color-gradient4: rgb(66, 32, 6); /* yellow-950 */
+
+    /* scrollbar-colors */
+    --color-scrollbar-track: rgb(25, 25, 25);
+    --color-scrollbar-thumb: rgb(50, 50, 50);
+    --color-scrollbar-hover: rgb(0, 170, 0);
+  }
+
+  :root.theme-gold {
+    --color-bg-base1: 255, 217, 90;
+    --color-bg-base2: 179, 152, 63;
+    --color-bg-base3: 102, 87, 36;
+    --color-bg-hover: 255, 228, 140;
+
+    --color-accent1: 37, 99, 235; /* blue-600 */
+    --color-accent2: 22, 163, 74; /* green-600 */
+    --color-accent3: 220, 38, 38; /* red-600 */
+    --color-accent4: 249, 115, 22; /* orange-500 */
+    --color-accent5: 219, 39, 119; /* pink-600 */
+    --color-accent6: 5, 150, 105; /* emerald-600 */
+    --color-accent7: 192, 38, 211; /* fuchsia-600 */
+    --color-accent8: 79, 70, 229; /* indigo-600 */
+    --color-accent9: 225, 29, 72; /* rose-600 */
+    --color-accent10: 14, 116, 144; /* cyan-700 */
+
+    --color-text-base: 53, 49, 35;
+    --color-text-faded: 102, 87, 36;
+
+    /* Gradient Colors */
+    --color-gradient1: rgb(37, 99, 235); /* blue-600 */
+    --color-gradient2: rgb(22, 163, 74); /* green-600 */
+    --color-gradient3: rgb(220, 38, 38); /* red-600 */
+    --color-gradient4: rgb(249, 115, 22); /* orange-500 */
+
+    /* scrollbar-colors */
+    --color-scrollbar-track: rgb(179, 152, 63);
+    --color-scrollbar-thumb: rgb(102, 87, 36);
+    --color-scrollbar-hover: rgb(255, 228, 140);
+  }
+
+  .refernce {
+    --color-gradient1: #999;
+  }
+}
+
+@layer components {
+  .input {
+    @apply rounded-full bg-definedColor-base3 px-5 py-3 placeholder:text-stone-400;
+  }
+}
+
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.3s,
+    color 0.1s;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--color-scrollbar-track);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-thumb);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-scrollbar-hover);
+}
+
+.gradient-background {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-gradient4),
+    var(--color-gradient2),
+    var(--color-gradient3),
+    var(--color-gradient1)
+  );
+}
