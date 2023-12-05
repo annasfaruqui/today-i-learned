@@ -36,7 +36,7 @@ function FactsList() {
   );
 
   return (
-    <div className="w-full">
+    <article className="w-full">
       {isLoading && !error && <Message message="Loading..." uppercase={true} />}
       {error && !isLoading && (
         <Message message="💥 Something went wrong" uppercase={true} />
@@ -62,7 +62,7 @@ function FactsList() {
           <DatabaseInfo />
         </>
       )}
-    </div>
+    </article>
   );
 }
 

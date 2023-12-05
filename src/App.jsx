@@ -15,17 +15,17 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col justify-between lg:min-h-screen">
-      <div className="mx-auto flex max-w-screen-xl flex-col  p-2 px-5 text-definedColor-base">
+    <div className="mx-auto flex flex-col gap-6 md:max-h-screen md:gap-4">
+      <div className="mx-auto flex max-w-screen-xl flex-col px-4 pt-2 text-definedColor-base md:overflow-hidden">
         <FactsProvider>
           <Header onHandleToggle={handleToggleForm} isFormOpen={isFormOpen} />
           {isFormOpen && <AddFactInput />}
           <MainSection />
         </FactsProvider>
       </div>
-      <div className="border-t-2 border-stone-500 bg-definedColor-base2 pt-2">
+      <footer className="max-w-screen border-t-2 border-stone-500 bg-definedColor-base2 pt-2">
         <Footer />
-      </div>
+      </footer>
     </div>
   );
 }
