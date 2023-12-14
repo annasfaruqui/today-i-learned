@@ -36,7 +36,7 @@ function FactsList() {
   );
 
   return (
-    <article className="w-full">
+    <article className="h-full w-full">
       {isLoading && !error && <Message message="Loading..." uppercase={true} />}
       {error && !isLoading && (
         <Message message="💥 Something went wrong" uppercase={true} />
