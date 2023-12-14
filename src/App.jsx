@@ -15,7 +15,7 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col gap-6 md:max-h-screen md:gap-4">
+    <div className="flex flex-col justify-between gap-6 md:h-screen md:gap-4">
       <div className="mx-auto flex w-screen flex-col px-4 pt-2 text-definedColor-base md:overflow-hidden xl:w-[80rem]">
         <FactsProvider>
           <Header onHandleToggle={handleToggleForm} isFormOpen={isFormOpen} />

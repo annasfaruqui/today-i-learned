@@ -4,7 +4,7 @@ function Message({ message, uppercase = false }) {
       <p
         className={`${
           uppercase && "uppercase"
-        } mx-8 mb-8 text-center text-4xl text-definedColor-faded`}
+        } mx-8 text-center text-4xl text-definedColor-faded`}
       >
         {message}
       </p>
