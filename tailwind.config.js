@@ -15,7 +15,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: '"Coiny", Sono, san-serif',
+      sans: "Coiny, Sono, san-serif",
     },
 
     extend: {
@@ -59,5 +59,3 @@ export default {
   },
   plugins: [],
 };
-
-// bg-gradient-to-br from-bg-definedColor-accent1 via-bg-definedColor-accent2 via-bg-definedColor-accent3 via-bg-definedColor-accent4 via-bg-definedColor-accent5 via-bg-definedColor-accent6 via-bg-definedColor-accent7 to-bg-definedColor-accent8
