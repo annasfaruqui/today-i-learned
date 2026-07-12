@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Toaster } from "react-hot-toast";
 import AddFactInput from "./components/AddFactInput";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -9,7 +10,7 @@ function App() {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   function handleToggleForm() {
-    setIsFormOpen(!isFormOpen);
+    setIsFormOpen((isFormOpen) => !isFormOpen);
   }
 
   return (
@@ -24,6 +25,29 @@ function App() {
       <footer className="max-w-screen border-t-2 border-stone-500 bg-definedColor-base2 pt-2">
         <Footer />
       </footer>
+
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        gutter={8}
+        toasterId="default"
+        toastOptions={{
+          style: { maxWidth: "650px", minWidth: "150px" },
+          className:
+            "bg-definedColor-base3 text-definedColor-base rounded-2xl shadow-xl",
+          duration: 5000,
+          removeDelay: 1000,
+          success: {
+            duration: 3000,
+            iconTheme: { primary: "rgb(var(--color-accent2))" },
+          },
+          error: {
+            duration: 5000,
+            iconTheme: { primary: "rgb(var(--color-accent3))" },
+          },
+          loading: { iconTheme: { primary: "rgb(var(--color-accent4))" } },
+        }}
+      />
     </div>
   );
 }

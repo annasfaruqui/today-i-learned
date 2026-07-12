@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import toast from "react-hot-toast";
 import { useFacts } from "../contexts/FactsContext";
 import { CATEGORIES } from "../data/data-categories";
 import supabase from "../services/supabase";
@@ -39,27 +40,32 @@ function AddFactInput() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (factText.length < 5 || source.length < 5 || category === "") return;
+    if (factText.length < 5 || source.length < 5 || category === "") {
+      toast.error(
+        "Fact and source should be more than 5 characters long, and a category must be selected.",
+      );
+      return;
+    }
 
     async function uploadFact() {
       globalDispatch({ type: "loading" });
       try {
         const { data: newFact, error } = await supabase
           .from("facts")
-          .insert([{ text: factText, source: source, category: category }])
+          .insert([{ text: factText, source, category }])
           .select();
 
-        if (error)
-          throw new Error("Something went wrong while uploading the fact");
+        if (error) throw error;
 
-        if (!error)
-          globalDispatch({
-            type: "facts/listUpdated",
-            payload: newFact,
-          });
+        globalDispatch({ type: "facts/listUpdated", payload: newFact });
+        toast.success("Fact successfully uploaded");
       } catch (err) {
-        console.error(err.message);
-        globalDispatch({ type: "rejected", payload: err.message });
+        const friendlyMessage =
+          err.message || "Something went wrong while uploading the fact";
+
+        console.error("Upload failed:", err);
+        globalDispatch({ type: "rejected", payload: friendlyMessage });
+        toast.error(friendlyMessage);
       }
     }
 

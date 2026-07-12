@@ -6,14 +6,22 @@ import Disputed from "./Disputed";
 import Tag from "./Tag";
 import VoteButton from "./VoteButton";
 
+const VOTES_INTERESTING = "votesInteresting";
+const VOTES_MINDBLOWING = "votesMindblowing";
+const VOTES_FALSE = "votesFalse";
+
 function Fact({ fact }) {
   const { dispatch } = useFacts();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState({
+    votesInteresting: false,
+    votesMindblowing: false,
+    votesFalse: false,
+  });
 
   const votesTrue = fact.votesInteresting + fact.votesMindblowing;
 
   async function updateVotes(vote) {
-    setIsLoading(true);
+    setIsLoading((prev) => ({ ...prev, [vote]: true }));
 
     try {
       const { data: updatedFact, error } = await supabase
@@ -22,16 +30,17 @@ function Fact({ fact }) {
         .eq("id", fact.id)
         .select();
 
-      if (error)
-        throw new Error("Something went wrong while updating the votes");
+      if (error) throw error;
 
-      if (!error)
-        dispatch({ type: "facts/votesUpdated", payload: updatedFact });
-
-      setIsLoading(false);
+      dispatch({ type: "facts/votesUpdated", payload: updatedFact });
     } catch (err) {
-      console.error(err.message);
-      dispatch({ type: "rejected", payload: err.message });
+      const friendlyMessage =
+        err.message || "Something went wrong while updating the votes";
+
+      console.error("Vote update failed:", err);
+      dispatch({ type: "rejected", payload: friendlyMessage });
+    } finally {
+      setIsLoading((prev) => ({ ...prev, [vote]: false }));
     }
   }
 
@@ -53,20 +62,23 @@ function Fact({ fact }) {
         <VoteButton
           value={fact.votesInteresting}
           emoji="👍"
-          onClick={() => updateVotes("votesInteresting")}
-          disabled={isLoading}
+          onClick={() => updateVotes(VOTES_INTERESTING)}
+          disabled={isLoading.votesInteresting}
+          isLoading={isLoading.votesInteresting}
         />
         <VoteButton
           value={fact.votesMindblowing}
           emoji="🤯"
-          onClick={() => updateVotes("votesMindblowing")}
-          disabled={isLoading}
+          onClick={() => updateVotes(VOTES_MINDBLOWING)}
+          disabled={isLoading.votesInteresting}
+          isLoading={isLoading.votesMindblowing}
         />
         <VoteButton
           value={fact.votesFalse}
           emoji="⛔"
-          onClick={() => updateVotes("votesFalse")}
-          disabled={isLoading}
+          onClick={() => updateVotes(VOTES_FALSE)}
+          disabled={isLoading.votesInteresting}
+          isLoading={isLoading.votesFalse}
         />
       </div>
     </div>

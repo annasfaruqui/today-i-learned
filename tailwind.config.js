@@ -55,6 +55,32 @@ export default {
           accent10: withOpacity("--color-accent10"),
         },
       },
+
+      borderColor: {
+        definedColor: {
+          themeDefault: withOpacity("--color-theme-default"),
+          themeFaded: withOpacity("--color-theme-faded"),
+          themeNeon: withOpacity("--color-theme-neon"),
+          themeGold: withOpacity("--color-theme-gold"),
+
+          "text-base": withOpacity("--color-text-base"),
+          base1: withOpacity("--color-bg-base1"),
+          base2: withOpacity("--color-bg-base2"),
+          base3: withOpacity("--color-bg-base3"),
+          "base-hover": withOpacity("--color-bg-hover"),
+
+          accent1: withOpacity("--color-accent1"),
+          accent2: withOpacity("--color-accent2"),
+          accent3: withOpacity("--color-accent3"),
+          accent4: withOpacity("--color-accent4"),
+          accent5: withOpacity("--color-accent5"),
+          accent6: withOpacity("--color-accent6"),
+          accent7: withOpacity("--color-accent7"),
+          accent8: withOpacity("--color-accent8"),
+          accent9: withOpacity("--color-accent9"),
+          accent10: withOpacity("--color-accent10"),
+        },
+      },
     },
   },
   plugins: [],
