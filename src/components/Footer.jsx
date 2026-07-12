@@ -1,5 +1,5 @@
-import SocialLink from "./SocialLink";
 import { socialLinks } from "../data/data-social";
+import SocialLink from "./SocialLink";
 
 function Footer() {
   return (

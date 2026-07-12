@@ -1,8 +1,7 @@
+import { useFacts } from "../contexts/FactsContext";
+import { CATEGORIES } from "../data/data-categories";
 import Button from "./Button";
 import List from "./List";
-
-import { CATEGORIES } from "../data/data-categories";
-import { useFacts } from "../contexts/FactsContext";
 
 function CategoryList() {
   const { dispatch } = useFacts();

@@ -1,13 +1,10 @@
 import { useEffect } from "react";
-
+import { useFacts } from "../contexts/FactsContext";
+import supabase from "../services/supabase";
+import DatabaseInfo from "./DatabaseInfo";
 import Fact from "./Fact";
 import List from "./List";
 import Message from "./Message";
-import DatabaseInfo from "./DatabaseInfo";
-
-import supabase from "../services/supabase";
-
-import { useFacts } from "../contexts/FactsContext";
 
 function FactsList() {
   const { filteredFacts, facts, dispatch, isLoading, error } = useFacts();

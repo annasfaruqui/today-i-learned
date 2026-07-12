@@ -1,8 +1,8 @@
 import { useReducer } from "react";
-import { CATEGORIES } from "../data/data-categories";
-import Button from "./Button";
-import supabase from "../services/supabase";
 import { useFacts } from "../contexts/FactsContext";
+import { CATEGORIES } from "../data/data-categories";
+import supabase from "../services/supabase";
+import Button from "./Button";
 
 const formInitialState = {
   factText: "",
@@ -62,6 +62,7 @@ function AddFactInput() {
         globalDispatch({ type: "rejected", payload: err.message });
       }
     }
+
     uploadFact();
 
     dispatch({ type: "resetForm" });

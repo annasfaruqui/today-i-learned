@@ -1,11 +1,10 @@
-import Tag from "./Tag";
-import VoteButton from "./VoteButton";
-import Disputed from "./Disputed";
-
+import { useState } from "react";
+import { useFacts } from "../contexts/FactsContext";
 import { CATEGORIES } from "../data/data-categories";
 import supabase from "../services/supabase";
-import { useFacts } from "../contexts/FactsContext";
-import { useState } from "react";
+import Disputed from "./Disputed";
+import Tag from "./Tag";
+import VoteButton from "./VoteButton";
 
 function Fact({ fact }) {
   const { dispatch } = useFacts();

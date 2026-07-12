@@ -1,11 +1,9 @@
 import { useState } from "react";
-
 import AddFactInput from "./components/AddFactInput";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import MainSection from "./components/MainSection";
-
 import { FactsProvider } from "./contexts/FactsContext";
-import Footer from "./components/Footer";
 
 function App() {
   const [isFormOpen, setIsFormOpen] = useState(false);
