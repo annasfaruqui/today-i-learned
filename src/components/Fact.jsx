@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFacts } from "../contexts/FactsContext";
 import { CATEGORIES } from "../data/data-categories";
-import supabase from "../services/supabase";
+import { updateFactVote } from "../services/factsService";
 import Disputed from "./Disputed";
 import Tag from "./Tag";
 import VoteButton from "./VoteButton";
@@ -24,13 +24,7 @@ function Fact({ fact }) {
     setIsLoading((prev) => ({ ...prev, [vote]: true }));
 
     try {
-      const { data: updatedFact, error } = await supabase
-        .from("facts")
-        .update({ [vote]: fact[vote] + 1 })
-        .eq("id", fact.id)
-        .select();
-
-      if (error) throw error;
+      const updatedFact = await updateFactVote(fact.id, vote);
 
       dispatch({ type: "facts/votesUpdated", payload: updatedFact });
     } catch (err) {
@@ -70,14 +64,14 @@ function Fact({ fact }) {
           value={fact.votesMindblowing}
           emoji="🤯"
           onClick={() => updateVotes(VOTES_MINDBLOWING)}
-          disabled={isLoading.votesInteresting}
+          disabled={isLoading.votesMindblowing}
           isLoading={isLoading.votesMindblowing}
         />
         <VoteButton
           value={fact.votesFalse}
           emoji="⛔"
           onClick={() => updateVotes(VOTES_FALSE)}
-          disabled={isLoading.votesInteresting}
+          disabled={isLoading.votesFalse}
           isLoading={isLoading.votesFalse}
         />
       </div>

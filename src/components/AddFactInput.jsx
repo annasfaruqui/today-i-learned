@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import toast from "react-hot-toast";
 import { useFacts } from "../contexts/FactsContext";
 import { CATEGORIES } from "../data/data-categories";
-import supabase from "../services/supabase";
+import { createFact } from "../services/factsService";
 import Button from "./Button";
 
 const formInitialState = {
@@ -50,12 +50,11 @@ function AddFactInput() {
     async function uploadFact() {
       globalDispatch({ type: "loading" });
       try {
-        const { data: newFact, error } = await supabase
-          .from("facts")
-          .insert([{ text: factText, source, category }])
-          .select();
-
-        if (error) throw error;
+        const newFact = await createFact({
+          text: factText,
+          source,
+          category,
+        });
 
         globalDispatch({ type: "facts/listUpdated", payload: newFact });
         toast.success("Fact successfully uploaded");

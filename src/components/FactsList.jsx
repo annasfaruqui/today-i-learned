@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useFacts } from "../contexts/FactsContext";
-import supabase from "../services/supabase";
+import { getFacts } from "../services/factsService";
 import DatabaseInfo from "./DatabaseInfo";
 import Fact from "./Fact";
 import List from "./List";
@@ -15,15 +15,16 @@ function FactsList() {
         dispatch({ type: "loading" });
 
         try {
-          const { data, error } = await supabase.from("facts").select("*");
-
-          if (error)
-            throw new Error("Something went wrong while loading the data");
+          const data = await getFacts();
 
           dispatch({ type: "facts/loaded", payload: data });
         } catch (err) {
           console.error(err);
-          dispatch({ type: "rejeted", payload: err });
+          dispatch({
+            type: "rejected",
+            payload:
+              err.message || "Something went wrong while loading the data",
+          });
         }
       }
 
