@@ -18,7 +18,7 @@ function Footer() {
         </p>
       </div>
       <p>
-        Concept test from&nbsp;
+        Concept from&nbsp;
         <span className="font-bold">Today I Learned</span>
         &nbsp;project from&nbsp;
         <span className=" font-bold tracking-wide text-definedColor-faded underline underline-offset-1">
